@@ -17,7 +17,7 @@ class MainWindow(QMainWindow):
             os.chdir(path)
         except:
             os.chdir(path)
-            self.browser.setUrl(QUrl("file:///"+os.path.realpath("files/PineApple home.html").replace("\\","/")))
+            self.browser.setUrl(QUrl("file:///"+os.path.realpath("files/home.html").replace("\\","/")))
         self.setWindowIcon(QIcon('files/logo.ico'))
         self.browser.loadFinished.connect(self.update_title)
         self.setCentralWidget(self.browser)
@@ -228,21 +228,21 @@ class MainWindow(QMainWindow):
         self.browser.setUrl(QUrl(url))
 
     def update_url(self,url):
-        if "PineApple home.html" in url.toString():
+        if "home.html" in url.toString():
             txt = "pineapple://home"
-        elif "PineApple about.html" in url.toString():
+        elif "about.html" in url.toString():
             txt="pineapple://about"
         else:
             txt=url.toString()
         self.url_bar.setText(txt)
 
     def about_url(self):
-        path = os.path.realpath("files/PineApple about.html")
+        path = os.path.realpath("files/about.html")
         url = "file:///" + path.replace("\\", "/")
         self.browser.setUrl(QUrl(url))
 
     def homepage(self):
-        self.browser.setUrl(QUrl("file:///"+os.path.realpath("files/PineApple home.html").replace("\\","/")))
+        self.browser.setUrl(QUrl("file:///"+os.path.realpath("files/home.html").replace("\\","/")))
 
     def duckduckgo(self):
         self.browser.setUrl(QUrl("https://duckduckgo.com/"))
